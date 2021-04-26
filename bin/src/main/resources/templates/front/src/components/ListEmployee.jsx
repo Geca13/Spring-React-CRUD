@@ -9,23 +9,6 @@ class ListEmployee extends Component {
              employees: []
         }
         this.addEmployee = this.addEmployee.bind(this);
-        this.editEmployee = this.editEmployee.bind(this);
-        this.deleteEmployee= this.deleteEmployee.bind(this);
-    }
-
-    deleteEmployee(id) {
-        EmployeeSevices.deleteEmployee(id)
-        .then(response => {
-            this.setState({employees: this.state.employees.filter(employee => employee.id !== id)})
-        })
-
-    }
-    employeeDetails(id){
-        this.props.history.push(`details-employee/${id}`)
-    }
-
-    editEmployee(id){
-      this.props.history.push(`update-employee/${id}`)
     }
     componentDidMount() {
         EmployeeSevices.getEmployees().then((response)=>{
@@ -63,11 +46,6 @@ class ListEmployee extends Component {
                                        <td>{employee.firstName}</td>
                                        <td>{employee.lastName}</td>
                                        <td>{employee.email}</td>
-                                       <td>
-                                           <button onClick={()=> this.editEmployee(employee.id)} className='btn btn-info'>Update</button>
-                                           <button style={{marginLeft: '10px'}} onClick={()=> this.deleteEmployee(employee.id)} className='btn btn-danger'>Delete</button>
-                                           <button onClick={()=> this.employeeDetails(employee.id)} className='btn btn-success'>Details</button>
-                                       </td>
 
                                    </tr>
                                 

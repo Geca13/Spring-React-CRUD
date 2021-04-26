@@ -10,18 +10,6 @@ class EmployeeServices {
     createEmployee(employee){
         return axios.post(EMPLOYEE_API,employee);
     }
-
-    getEmployeeById(employeeId) {
-        return axios.get(EMPLOYEE_API + '/'+employeeId);
-    }
-
-    updateEmployee(employee,employeeId){
-        return axios.put(EMPLOYEE_API+'/'+employeeId,employee);
-    }
-
-    deleteEmployee(employeeId) {
-        return axios.delete(EMPLOYEE_API+ '/'+ employeeId);
-    }
 }
 
 export default new EmployeeServices()
